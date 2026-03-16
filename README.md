@@ -30,9 +30,11 @@
 - `docs/13_verification_notes.md`
 - `docs/14_consulting_report_framework.md`
 - `docs/15_operating_workflow.md`
+- `docs/16_pages_deployment_sop.md`
 - `meeting-reports/templates/meeting-report-template.md`
 - `monthly-reports/templates/monthly-report-template.md`
 - `client-report/index.html`
+- `scripts/publish-client-report.ps1`
 
 ## 使用方式
 

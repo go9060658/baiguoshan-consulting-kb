@@ -106,6 +106,12 @@
     title: "顧問案作業流程",
     tag: "Workflow",
     summary: "固定後續開會、補資料、更新報告與同步業主頁面的 SOP。"
+  },
+  {
+    file: "docs/16_pages_deployment_sop.md",
+    title: "Pages 發布流程",
+    tag: "Deploy",
+    summary: "固定將業主版頁面發布到 GitHub Pages 的 SOP 與腳本。"
   }
 ];
 
