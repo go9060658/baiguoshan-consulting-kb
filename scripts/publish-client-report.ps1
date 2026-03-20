@@ -12,54 +12,54 @@ function Write-Step {
 }
 
 if (-not (Test-Path $RepoPath)) {
-    throw "找不到專案路徑：$RepoPath"
+    throw "Repo path not found: $RepoPath"
 }
 
 $sourceFile = Join-Path $RepoPath "client-report\index.html"
 if (-not (Test-Path $sourceFile)) {
-    throw "找不到業主版頁面：$sourceFile"
+    throw "Client report page not found: $sourceFile"
 }
 
 $status = git -C $RepoPath status --short
 if ($status) {
-    throw "目前有未提交變更，請先 commit 再發布。"
+    throw "Working tree is dirty. Commit changes before publish."
 }
 
 $repoName = Split-Path $RepoPath -Leaf
-$tempRoot = Join-Path ([System.IO.Path]::GetTempPath()) "${repoName}-pages"
+$tempRoot = Join-Path ([System.IO.Path]::GetTempPath()) ($repoName + "-pages")
 
 if (Test-Path $tempRoot) {
-    Write-Step "清除舊的暫存 worktree"
+    Write-Step "Remove old temp worktree"
     Remove-Item -Recurse -Force $tempRoot
 }
 
-Write-Step "建立 Pages 暫存 worktree"
+Write-Step "Create Pages temp worktree"
 git -C $RepoPath worktree add $tempRoot $PagesBranch | Out-Null
 
 try {
-    Write-Step "覆寫 gh-pages 首頁"
+    Write-Step "Copy client report to gh-pages"
     Copy-Item $sourceFile (Join-Path $tempRoot "index.html") -Force
     Set-Content -Path (Join-Path $tempRoot ".nojekyll") -Value "" -Encoding UTF8
 
-    Write-Step "檢查是否有變更"
+    Write-Step "Check for changes"
     $pagesStatus = git -C $tempRoot status --short
     if (-not $pagesStatus) {
-        Write-Host "沒有可發布的變更。" -ForegroundColor Yellow
+        Write-Host "No changes to publish." -ForegroundColor Yellow
         return
     }
 
-    Write-Step "提交 gh-pages 更新"
+    Write-Step "Commit gh-pages update"
     git -C $tempRoot add index.html .nojekyll
     $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss zzz"
-    git -C $tempRoot commit -m "更新業主版 Q2 顧問報告頁 ($timestamp)" | Out-Null
+    git -C $tempRoot commit -m "Update client report page ($timestamp)" | Out-Null
 
-    Write-Step "推送到 gh-pages"
+    Write-Step "Push gh-pages"
     git -C $tempRoot push origin $PagesBranch | Out-Null
 
-    Write-Host "發布完成：" -ForegroundColor Green
+    Write-Host "Publish complete:" -ForegroundColor Green
     Write-Host "https://go9060658.github.io/baiguoshan-consulting-kb/" -ForegroundColor Green
 }
 finally {
-    Write-Step "移除暫存 worktree"
+    Write-Step "Remove temp worktree"
     git -C $RepoPath worktree remove $tempRoot --force | Out-Null
 }
