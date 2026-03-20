@@ -26,7 +26,7 @@ if ($status) {
 }
 
 $repoName = Split-Path $RepoPath -Leaf
-$tempRoot = Join-Path ([System.IO.Path]::GetTempPath()) "$repoName-pages"
+$tempRoot = Join-Path ([System.IO.Path]::GetTempPath()) "${repoName}-pages"
 
 if (Test-Path $tempRoot) {
     Write-Step "清除舊的暫存 worktree"
