@@ -14,10 +14,11 @@
       --ink: #1c221d;
       --muted: #5d5b53;
       --forest: #214936;
+      --forest-deep: #183a2d;
       --forest-soft: #dce9e0;
       --gold: #b77d2e;
       --gold-soft: #f3e3c5;
-      --card: rgba(255, 252, 247, 0.92);
+      --card: rgba(255, 252, 247, 0.94);
       --line: rgba(28, 34, 29, 0.1);
       --shadow: 0 18px 40px rgba(58, 42, 17, 0.08);
       --radius-xl: 30px;
@@ -45,7 +46,7 @@
 
     p {
       margin: 0;
-      line-height: 1.8;
+      line-height: 1.82;
     }
 
     .page {
@@ -94,7 +95,7 @@
     .quarter-pill.active {
       background: linear-gradient(135deg, #204c39, #183a2d);
       color: #fffaf0;
-      border-color: rgba(0,0,0,0);
+      border-color: transparent;
     }
 
     .quarter-pill.disabled {
@@ -104,7 +105,7 @@
 
     .hero {
       display: grid;
-      grid-template-columns: 1.25fr 0.95fr;
+      grid-template-columns: 1.28fr 0.92fr;
       gap: 18px;
       margin-bottom: 18px;
     }
@@ -112,7 +113,7 @@
     .hero-main {
       padding: 34px;
       background:
-        linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.62)),
+        linear-gradient(135deg, rgba(255,255,255,0.82), rgba(255,255,255,0.64)),
         linear-gradient(135deg, rgba(33,73,54,0.08), rgba(183,125,46,0.08));
     }
 
@@ -159,20 +160,15 @@
 
     .hero-side {
       display: grid;
-      gap: 12px;
-      padding: 16px;
+      gap: 14px;
+      padding: 18px;
       color: #f8f2e7;
-      background:
-        linear-gradient(180deg, rgba(33,73,54,0.96), rgba(24,58,45,0.98));
-    }
-
-    .hero-side-top {
-      padding: 18px 18px 2px;
+      background: linear-gradient(180deg, rgba(33,73,54,0.96), rgba(24,58,45,0.98));
     }
 
     .hero-side-top p {
-      margin-top: 8px;
-      color: rgba(248,242,231,0.8);
+      margin-top: 10px;
+      color: rgba(248,242,231,0.82);
       font-size: 15px;
     }
 
@@ -180,11 +176,10 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 12px;
-      padding: 0 4px 4px;
     }
 
     .score-card {
-      min-height: 140px;
+      min-height: 138px;
       padding: 18px;
       border-radius: var(--radius-md);
       background: rgba(255,255,255,0.08);
@@ -199,7 +194,7 @@
 
     .score-card strong {
       display: block;
-      margin-top: 22px;
+      margin-top: 20px;
       font-size: 28px;
       font-family: "Noto Serif TC", serif;
     }
@@ -231,16 +226,16 @@
       text-transform: uppercase;
     }
 
-    .grid-3, .grid-2, .timeline, .strategy-grid, .data-grid, .insight-grid {
+    .grid-4, .grid-3, .grid-2, .timeline, .strategy-grid, .data-grid {
       display: grid;
       gap: 16px;
     }
 
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
     .grid-3 { grid-template-columns: repeat(3, 1fr); }
     .grid-2 { grid-template-columns: repeat(2, 1fr); }
     .strategy-grid { grid-template-columns: repeat(3, 1fr); }
     .data-grid { grid-template-columns: repeat(2, 1fr); }
-    .insight-grid { grid-template-columns: 1fr 1fr; }
 
     .card {
       padding: 22px;
@@ -257,9 +252,36 @@
       color: var(--muted);
     }
 
+    .metric-card {
+      padding: 22px;
+      border-radius: var(--radius-lg);
+      background: #fffdfa;
+      border: 1px solid var(--line);
+    }
+
+    .metric-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .metric-card strong {
+      display: block;
+      margin-top: 14px;
+      font-size: 30px;
+      font-family: "Noto Serif TC", serif;
+      color: var(--forest-deep);
+    }
+
+    .metric-card p {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
     .focus-band {
       display: grid;
-      grid-template-columns: 1.1fr 1.2fr;
+      grid-template-columns: 1.08fr 1.12fr;
       gap: 16px;
       align-items: stretch;
     }
@@ -271,7 +293,10 @@
       border: 1px solid rgba(33,73,54,0.12);
     }
 
-    .focus-summary p { color: var(--muted); margin-top: 10px; }
+    .focus-summary p {
+      margin-top: 10px;
+      color: var(--muted);
+    }
 
     .mini-list {
       display: grid;
@@ -279,15 +304,16 @@
     }
 
     .mini-item {
-      padding: 14px 16px;
+      padding: 16px 18px;
       border-radius: 16px;
       background: rgba(28, 34, 29, 0.04);
       color: var(--muted);
+      border: 1px solid rgba(28, 34, 29, 0.05);
     }
 
     .timeline-item {
       display: grid;
-      grid-template-columns: 96px 1fr;
+      grid-template-columns: 104px 1fr;
       gap: 14px;
       align-items: start;
       padding: 18px;
@@ -337,11 +363,36 @@
       margin-top: 8px;
     }
 
+    .ratio-card {
+      padding: 22px;
+      border-radius: var(--radius-lg);
+      background: #fffdfa;
+      border: 1px solid var(--line);
+    }
+
+    .ratio-badge {
+      display: inline-flex;
+      margin-bottom: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(183, 125, 46, 0.12);
+      color: #8f5d17;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
     .data-request {
       padding: 22px;
       border-radius: var(--radius-lg);
       background: linear-gradient(135deg, rgba(183,125,46,0.08), rgba(183,125,46,0.02));
       border: 1px solid rgba(183,125,46,0.15);
+    }
+
+    .next-step {
+      padding: 22px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(33,73,54,0.12), rgba(33,73,54,0.03));
+      border: 1px solid rgba(33,73,54,0.12);
     }
 
     .footer-note {
@@ -353,11 +404,11 @@
     @media (max-width: 980px) {
       .hero,
       .focus-band,
+      .grid-4,
       .grid-3,
       .grid-2,
       .strategy-grid,
-      .data-grid,
-      .insight-grid {
+      .data-grid {
         grid-template-columns: 1fr;
       }
 
@@ -385,42 +436,41 @@
 
     <header class="hero">
       <section class="hero-main panel">
-        <div class="eyebrow">Consulting Report</div>
+        <div class="eyebrow">Quarterly Consulting Report</div>
         <h1>百果山探索樂園<br>2026 Q2 顧問報告</h1>
         <p class="hero-intro">
-          本報告以 2026 年 1 月重新開幕後的營運情境為基礎，
-          聚焦第二季的檔期規劃、口碑管理、收費溝通與平日續航策略，
-          作為後續顧問分析與執行優化的第一版季度報告。
+          本次版本已整合 2026-03-20 業主會議內容。第二季的經營重點，已從「再把流量往上推」
+          明確轉為「在自然來客已足夠的前提下，維持品質、降低誤解，並把高峰時段的體驗接住」。
         </p>
         <div class="hero-meta">
-          <div class="meta-pill">報告日期：2026-03-16</div>
           <div class="meta-pill">報告期間：2026 Q2</div>
-          <div class="meta-pill">資料截點：2026-03-16 12:01 +08:00</div>
-          <div class="meta-pill">版本：v0.1</div>
+          <div class="meta-pill">資料截點：2026-03-20 14:17 +08:00</div>
+          <div class="meta-pill">版本：v1.1</div>
+          <div class="meta-pill">更新重點：會後數據與 Q2 執行方向</div>
         </div>
       </section>
 
       <aside class="hero-side panel">
         <div class="hero-side-top">
-          <h3>本季報告焦點</h3>
-          <p>先完成檔期規劃與基線建立，再用第二季實際數據持續更新分析。</p>
+          <h3>本季管理主題</h3>
+          <p>在自然流量足夠的前提下，先把玩法理解、現場秩序與口碑品質穩住。</p>
         </div>
         <div class="score-grid">
           <div class="score-card">
-            <span>報告季度</span>
-            <strong>2026 Q2</strong>
+            <span>三月平日</span>
+            <strong>400 / 日</strong>
           </div>
           <div class="score-card">
-            <span>核心檔期</span>
-            <strong>兒童節</strong>
+            <span>三月假日</span>
+            <strong>5,000 / 兩日</strong>
           </div>
           <div class="score-card">
-            <span>本季專題</span>
-            <strong>平日續航</strong>
+            <span>理想人流</span>
+            <strong>3,000 / 日</strong>
           </div>
           <div class="score-card">
-            <span>策略主軸</span>
-            <strong>口碑 + 流量</strong>
+            <span>五月規劃</span>
+            <strong>夜間延長</strong>
           </div>
         </div>
       </aside>
@@ -429,23 +479,31 @@
     <section class="section panel">
       <div class="section-head">
         <div>
-          <div class="section-kicker">Executive Summary</div>
-          <h2>本季重點判斷</h2>
+          <div class="section-kicker">Current Snapshot</div>
+          <h2>目前已掌握的營運現況</h2>
         </div>
-        <p>第二季的重點不是把所有事情一次做完，而是選對第一個檔期、建立口碑基線，並讓後續分析能持續累積。</p>
+        <p>以下內容以 2026-03-20 業主會議為基準，作為第二季顧問規劃的第一批內部營運基線。</p>
       </div>
-      <div class="grid-3">
-        <article class="card">
-          <h3>第一個完整季度</h3>
-          <p>Q2 是重新開幕後第一個完整季度，必須開始建立可以長期追蹤的口碑、客流與營運資料基線。</p>
+      <div class="grid-4">
+        <article class="metric-card">
+          <span>三月平日平均</span>
+          <strong>約 400 人</strong>
+          <p>目前平日量體不大，但有利於建立較舒適的體驗感。</p>
         </article>
-        <article class="card">
-          <h3>兒童節是第一波放大點</h3>
-          <p>4 月兒童節與清明連假是第二季最值得放大的家庭檔期，適合集中火力做內容與體驗設計。</p>
+        <article class="metric-card">
+          <span>三月假日人流</span>
+          <strong>約 5,000 人</strong>
+          <p>週六、週日兩天合計，單日約落在 2,500 人左右。</p>
         </article>
-        <article class="card">
-          <h3>核心問題在玩法溝通</h3>
-          <p>市場已經知道百果山是恐龍主題景點，現在更需要讓家長清楚理解怎麼玩、怎麼買、怎麼排最順。</p>
+        <article class="metric-card">
+          <span>二月歷史參考</span>
+          <strong>約 8 萬人</strong>
+          <p>因重新開幕與春節因素偏特殊，僅供參考，不作常態基線。</p>
+        </article>
+        <article class="metric-card">
+          <span>主要變動因子</span>
+          <strong>天氣</strong>
+          <p>是否下雨仍會明顯影響來客與現場狀態。</p>
         </article>
       </div>
     </section>
@@ -453,29 +511,23 @@
     <section class="section panel">
       <div class="section-head">
         <div>
-          <div class="section-kicker">Current Facts</div>
-          <h2>目前已掌握的營運事實</h2>
+          <div class="section-kicker">Quarter Judgment</div>
+          <h2>第二季整體判斷</h2>
         </div>
       </div>
-      <div class="grid-2">
-        <article class="card">
-          <h3>園區現況</h3>
-          <ul class="bullet-list">
-            <li>2026 年 1 月重新開幕</li>
-            <li>現階段主打 12 項設施</li>
-            <li>以恐龍主題與親子半日遊作為主要市場定位</li>
-            <li>園區整體具備明確的家庭出遊吸引力</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>市場印象</h3>
-          <ul class="bullet-list">
-            <li>恐龍主題仍是最強記憶點</li>
-            <li>彩虹滑道、漂漂河與叢林探險車最具代表性</li>
-            <li>家長對收費與玩法組合需要更清楚的說明</li>
-            <li>第二季最適合用檔期與內容同步放大</li>
-          </ul>
-        </article>
+      <div class="focus-band">
+        <div class="focus-summary">
+          <h3>Q2 的目標不是追更高人數，而是把自然來客接穩。</h3>
+          <p>
+            四月至六月本來就有連假與家庭出遊需求，三月底又有電視節目採訪，代表百果山第二季其實不缺基本流量。
+            真正需要被管理的，是購票理解、排隊體驗、安全秩序與連假後的口碑品質。
+          </p>
+        </div>
+        <div class="mini-list">
+          <div class="mini-item">業主認為單日約 3,000 人是最理想的人流規模，均銷與體驗都較穩定。</div>
+          <div class="mini-item">超過 3,000 人後，抱怨、排隊與現場壓力會上升，對實際業績成長幫助有限。</div>
+          <div class="mini-item">第二季目前不建議額外加強廣告，而應優先做好玩法說明、現場品質與夜間時段預熱。</div>
+        </div>
       </div>
     </section>
 
@@ -486,19 +538,18 @@
           <h2>Q2 專題議題</h2>
         </div>
       </div>
-      <div class="focus-band">
-        <div class="focus-summary">
-          <h3>兒童節連假首波放大，並建立連假後的平日續航機制</h3>
-          <p>
-            第二季不建議只做單點活動，而應把兒童節檔期當成第一波放大點，
-            同時建立 5 月與 6 月的延續性內容與導客方案，讓檔期流量能轉成口碑、回訪與後續成長基線。
-          </p>
-        </div>
-        <div class="mini-list">
-          <div class="mini-item">第一步：放大兒童節與清明連假聲量與來客。</div>
-          <div class="mini-item">第二步：把檔期內容延續到 5 月平日與家庭內容。</div>
-          <div class="mini-item">第三步：為 6 月端午與暑假前預熱建立節奏。</div>
-        </div>
+      <div class="card">
+        <h3>在自然流量已經足夠的前提下，如何維持品質並降低誤解</h3>
+        <p>
+          本季最重要的任務，不是再創造更大的聲量，而是讓家長在出發前就知道怎麼買、怎麼玩、怎麼安排時間，
+          同時讓假日高峰不要因排隊、危險行為或票價理解落差而變成負面口碑。
+        </p>
+        <ul class="bullet-list">
+          <li>先把票價與玩法說明做成行前必看內容。</li>
+          <li>用友善提醒取代硬性規定，降低現場衝突。</li>
+          <li>把連假來客轉成正面照片、留言與後續回訪。</li>
+          <li>為五月夜間營運先建立避暑與夜景想像。</li>
+        </ul>
       </div>
     </section>
 
@@ -506,31 +557,89 @@
       <div class="section-head">
         <div>
           <div class="section-kicker">Seasonal Planning</div>
-          <h2>4 月到 6 月規劃主軸</h2>
+          <h2>3 月下旬到 6 月的季度節奏</h2>
         </div>
-        <p>之後每一季的規劃都會先看當季節點，再安排內容與策略節奏。</p>
+        <p>第二季不應只做單一活動，而要把媒體曝光、連假流量、夜間營運與暑假前預熱串成連續節奏。</p>
       </div>
       <div class="timeline">
+        <article class="timeline-item">
+          <div class="timeline-month">3 月下旬</div>
+          <div>
+            <h3>媒體曝光承接</h3>
+            <p>利用三家電視台採訪與節目露出，提前鋪陳兒童節行前必看內容、三大設施玩法與園區規則整理。</p>
+          </div>
+        </article>
         <article class="timeline-item">
           <div class="timeline-month">4 月</div>
           <div>
             <h3>兒童節與清明連假</h3>
-            <p>主軸建議為「恐龍小勇士月」，強化親子任務、三大設施導流、入園玩法與現場分享內容。</p>
+            <p>主軸不是再刺激更多流量，而是用購票規則圖解、玩法懶人包、安全提醒與假日人流說明，先把連假體驗接住。</p>
           </div>
         </article>
         <article class="timeline-item">
           <div class="timeline-month">5 月</div>
           <div>
-            <h3>勞動節與母親節</h3>
-            <p>主軸可轉向「家庭共遊」與「媽媽最輕鬆的親子半日行程」，降低決策成本，拉高平日與週末續航。</p>
+            <h3>夜間營運主題月</h3>
+            <p>預計以五、六、日延長營業到 21:00、最後入園 20:00 為規劃版本，主打避暑、夜景與延長遊玩時間。</p>
           </div>
         </article>
         <article class="timeline-item">
           <div class="timeline-month">6 月</div>
           <div>
-            <h3>端午節與暑假前預熱</h3>
-            <p>主軸建議為「端午放電攻略 + 暑假前預熱」，提前累積家庭出遊意圖與內容素材。</p>
+            <h3>端午與暑假前預熱</h3>
+            <p>延續夜間營運與平日分流溝通，把第二季的體驗回饋整理成暑假前的家庭決策資訊。</p>
           </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section panel">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Content Planning</div>
+          <h2>第二季貼文比例與內容方向</h2>
+        </div>
+      </div>
+      <div class="grid-4">
+        <article class="ratio-card">
+          <div class="ratio-badge">教育類 30%</div>
+          <h3>讓家長先看懂怎麼玩</h3>
+          <ul class="bullet-list">
+            <li>購票規則與玩法懶人包</li>
+            <li>彩虹滑道正確玩法</li>
+            <li>安全玩耍 1-2-3 短影音</li>
+            <li>園區點心攤位位置圖</li>
+          </ul>
+        </article>
+        <article class="ratio-card">
+          <div class="ratio-badge">資訊類 30%</div>
+          <h3>建立正確預期</h3>
+          <ul class="bullet-list">
+            <li>一般票、團體票與特約方案差異</li>
+            <li>假日人流預報</li>
+            <li>平日入園建議</li>
+            <li>夜間營業公告</li>
+          </ul>
+        </article>
+        <article class="ratio-card">
+          <div class="ratio-badge">感性 / 熱度類 30%</div>
+          <h3>延續自然熱度</h3>
+          <ul class="bullet-list">
+            <li>電視台採訪片段二次剪輯</li>
+            <li>夜景與山景氛圍內容</li>
+            <li>正面照片與留言回饋</li>
+            <li>「看到節目來玩的請舉手」互動貼文</li>
+          </ul>
+        </article>
+        <article class="ratio-card">
+          <div class="ratio-badge">機動應變 10%</div>
+          <h3>處理即時變動</h3>
+          <ul class="bullet-list">
+            <li>雨天提醒</li>
+            <li>尖峰人流通知</li>
+            <li>臨時服務公告</li>
+            <li>夜間營運更新</li>
+          </ul>
         </article>
       </div>
     </section>
@@ -539,51 +648,24 @@
       <div class="section-head">
         <div>
           <div class="section-kicker">Priority Strategies</div>
-          <h2>本季優先推動的三個方向</h2>
+          <h2>本季三個優先推動方向</h2>
         </div>
       </div>
       <div class="strategy-grid">
         <article class="strategy-card">
           <div class="strategy-no">01</div>
-          <h3>放大兒童節檔期內容</h3>
-          <p>以恐龍主題、親子任務與三大必玩設施為主軸，提升第二季第一波市場關注與分享量。</p>
+          <h3>把購票規則與玩法說明做清楚</h3>
+          <p>目前的票價組合與玩法差異容易造成現場混亂。第二季應優先把一般票、團體票、特約方案與入園後玩法整理成家長一看就懂的內容。</p>
         </article>
         <article class="strategy-card">
           <div class="strategy-no">02</div>
-          <h3>優化收費與玩法溝通</h3>
-          <p>建議將入園內容、設施加購與家庭玩法組合說明得更完整，降低價格預期落差。</p>
+          <h3>用友善提醒處理安全與秩序</h3>
+          <p>針對倒著溜滑梯、大人抱小孩一起溜、隨意搬動桌椅等問題，建議用圖解與短影音做前置教育，而不是只靠現場口頭提醒。</p>
         </article>
         <article class="strategy-card">
           <div class="strategy-no">03</div>
-          <h3>建立第二季數據基線</h3>
-          <p>第二季若能同步建立人流、票務、評論與社群的追蹤機制，後續報告就能更精準地提供策略建議。</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section panel">
-      <div class="section-head">
-        <div>
-          <div class="section-kicker">Key Insights</div>
-          <h2>本季關鍵洞察</h2>
-        </div>
-      </div>
-      <div class="insight-grid">
-        <article class="card">
-          <h3>目前最值得放大的亮點</h3>
-          <ul class="bullet-list">
-            <li>恐龍主題具備天然的家庭吸引力</li>
-            <li>三大設施足以支撐第二季檔期內容</li>
-            <li>Q2 節點多，適合建立季度內容節奏</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>目前最需要修正的地方</h3>
-          <ul class="bullet-list">
-            <li>收費與玩法組合說明需更清楚</li>
-            <li>需要建立正式數據基線，避免後續決策只靠感覺</li>
-            <li>內容規劃需從單次宣傳改成連續性檔期節奏</li>
-          </ul>
+          <h3>把夜間營運做成加分體驗</h3>
+          <p>五月夜間時段若正式啟動，應以避暑、夜景與延長遊玩時間作為包裝重點，讓百果山從白天景點延伸成週末夜間家庭行程。</p>
         </article>
       </div>
     </section>
@@ -594,43 +676,44 @@
           <div class="section-kicker">Data Requests</div>
           <h2>後續需提供資料</h2>
         </div>
-        <p>為了讓後續月報與季度分析更準確，建議第二季開始固定補充以下資料。</p>
+        <p>第二季後續若要把顧問工作從方向建議升級成真正的管理分析，下列資料需要持續補入。</p>
       </div>
       <div class="data-grid">
         <article class="data-request">
-          <h3>營運與票務資料</h3>
+          <h3>人流與營收資料</h3>
           <ul class="bullet-list">
-            <li>每月入園人次</li>
-            <li>平日與假日人次拆分</li>
-            <li>門票收入與設施收入</li>
-            <li>現場與線上售票占比</li>
+            <li>每日入園人次</li>
+            <li>平日 / 假日拆分</li>
+            <li>門票收入</li>
+            <li>設施收入</li>
             <li>平均客單價</li>
           </ul>
         </article>
         <article class="data-request">
           <h3>社群與口碑資料</h3>
           <ul class="bullet-list">
-            <li>Facebook 與 Instagram 後台數據</li>
-            <li>Google 商家評分與評論變化</li>
-            <li>高互動貼文與內容表現</li>
-            <li>留言、私訊與常見問題整理</li>
+            <li>Facebook 後台數據</li>
+            <li>Instagram 後台數據</li>
+            <li>高互動貼文整理</li>
+            <li>Google 評論與常見問題整理</li>
           </ul>
         </article>
         <article class="data-request">
           <h3>現場體驗資料</h3>
           <ul class="bullet-list">
             <li>熱門設施排隊時間</li>
-            <li>現場最常被詢問的問題</li>
+            <li>現場最常被問的問題</li>
             <li>客訴與服務問題紀錄</li>
-            <li>連假與平日現場觀察差異</li>
+            <li>夜間時段實際表現</li>
           </ul>
         </article>
         <article class="data-request">
-          <h3>後續更新方式</h3>
+          <h3>顧問更新方式</h3>
           <ul class="bullet-list">
-            <li>顧問端會依據新增資料持續更新報告</li>
-            <li>後續季度會新增 Q3、Q4 報告頁面</li>
-            <li>每次更新都會保留時間標記與版本資訊</li>
+            <li>收到資料後更新 Q2 報告</li>
+            <li>同步更新業主版頁面</li>
+            <li>後續進入月報與季報追蹤</li>
+            <li>逐步建立固定 KPI 基線</li>
           </ul>
         </article>
       </div>
@@ -639,21 +722,29 @@
     <section class="section panel">
       <div class="section-head">
         <div>
-          <div class="section-kicker">Quarter Method</div>
-          <h2>後續顧問更新方式</h2>
+          <div class="section-kicker">Next Step</div>
+          <h2>後續顧問更新節奏</h2>
         </div>
       </div>
       <div class="grid-2">
-        <article class="card">
-          <h3>固定追蹤同一組指標</h3>
-          <p>後續報告會持續追蹤同一組 KPI，包含口碑、客流、票務、社群與現場體驗，讓每次分析可以累積，而不是重做。</p>
+        <article class="next-step">
+          <h3>顧問端下一步</h3>
+          <ul class="bullet-list">
+            <li>持續整理第二季貼文與內容執行節奏</li>
+            <li>將業主補件數據納入固定 KPI 追蹤</li>
+            <li>在五月夜間時段啟動前完成內容與公告規劃</li>
+          </ul>
         </article>
-        <article class="card">
-          <h3>每一季增加新的專題議題</h3>
-          <p>除了固定追蹤外，每一季也會挑選一個新的主題做深入分析，讓策略建議能對應當季重點。</p>
+        <article class="next-step">
+          <h3>本季管理重點</h3>
+          <ul class="bullet-list">
+            <li>先把規則、票價與玩法說清楚</li>
+            <li>把高峰流量轉成穩定的正面體驗</li>
+            <li>把第二季做成可持續追蹤的基線季度</li>
+          </ul>
         </article>
       </div>
-      <p class="footer-note">本頁為業主閱讀版本，內容聚焦於季度判斷、檔期規劃、優先建議與後續資料更新方向。</p>
+      <p class="footer-note">本頁面將隨後續數據補入持續更新，作為百果山探索樂園第二季顧問報告的業主閱讀版本。</p>
     </section>
   </div>
 </body>

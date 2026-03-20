@@ -97,9 +97,9 @@
   },
   {
     file: "client-report/index.html",
-    title: "業主報告入口",
+    title: "業主版 Q2 顧問報告",
     tag: "Client",
-    summary: "給業主看的正式報告入口頁，後續更新可直接從這裡查看。"
+    summary: "目前對外的 Q2 HTML 報告頁，整合會後數據、季度判斷與後續資料需求。"
   },
   {
     file: "docs/15_operating_workflow.md",
@@ -112,6 +112,18 @@
     title: "Pages 發布流程",
     tag: "Deploy",
     summary: "固定將業主版頁面發布到 GitHub Pages 的 SOP 與腳本。"
+  },
+  {
+    file: "meeting-reports/2026-03-20-owner-meeting-summary.md",
+    title: "2026-03-20 業主會議紀錄",
+    tag: "Meeting",
+    summary: "整理本次會議中確認的人流數據、Q2 經營重點與夜間規劃方向。"
+  },
+  {
+    file: "content-plans/2026-q2-social-content-plan.md",
+    title: "2026 Q2 社群內容規劃",
+    tag: "Content",
+    summary: "把貼文比例、每月節奏、題型方向與執行原則正式落成專案文件。"
   }
 ];
 
