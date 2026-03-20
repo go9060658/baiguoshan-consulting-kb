@@ -41,6 +41,7 @@ const REQUEST_STATUS_LABEL = {
 let projects = [];
 let activeProjectId = "";
 let activeTabId = "";
+let activeMeetingRecordId = "";
 let isProjectMenuOpen = false;
 
 function escapeHtml(value) {
@@ -82,6 +83,22 @@ function ensureActiveTab(project) {
   if (!exists) {
     activeTabId = tabs[0]?.id || "";
   }
+}
+
+function normalizeMeetingRecords(view) {
+  return (view?.records || view?.timeline || []).map((record, index) => ({
+    ...record,
+    id: record.id || `meeting-${index + 1}`
+  }));
+}
+
+function ensureActiveMeetingRecord(view) {
+  const records = normalizeMeetingRecords(view);
+  const exists = records.some((record) => record.id === activeMeetingRecordId);
+  if (!exists) {
+    activeMeetingRecordId = records[0]?.id || "";
+  }
+  return records;
 }
 
 function setProjectMenuState(nextState) {
@@ -133,6 +150,7 @@ function renderProjectMenu(project) {
       activeProjectId = button.dataset.projectId;
       const nextProject = getActiveProject();
       activeTabId = nextProject?.tabs?.[0]?.id || "";
+      activeMeetingRecordId = "";
       setProjectMenuState(false);
       render();
     });
@@ -213,6 +231,9 @@ function renderProjectMeta(project) {
   heroActions.querySelectorAll("[data-action-tab]").forEach((button) => {
     button.addEventListener("click", () => {
       activeTabId = button.dataset.actionTab;
+      if (activeTabId !== "meetings") {
+        activeMeetingRecordId = "";
+      }
       renderSidebarTabs(project);
       renderActiveView(project);
       viewContainer.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -235,6 +256,9 @@ function renderSidebarTabs(project) {
   sidebarTabs.querySelectorAll(".sidebar-tab").forEach((button) => {
     button.addEventListener("click", () => {
       activeTabId = button.dataset.tabId;
+      if (activeTabId !== "meetings") {
+        activeMeetingRecordId = "";
+      }
       renderSidebarTabs(project);
       renderActiveView(project);
     });
@@ -344,21 +368,51 @@ function renderUpdatesView(view) {
 }
 
 function renderMeetingsView(view) {
+  const records = ensureActiveMeetingRecord(view);
+  const activeRecord = records.find((record) => record.id === activeMeetingRecordId) || records[0];
+
+  if (!activeRecord) {
+    return `<div class="empty-card">目前還沒有會議紀錄。</div>`;
+  }
+
   return `
-    <div class="timeline">
-      ${(view.timeline || []).map((item) => `
-        <article class="timeline-item">
-          <div class="timeline-date">${escapeHtml(item.date)}</div>
+    <div class="meeting-layout">
+      <aside class="meeting-nav">
+        ${records.map((record) => `
+          <button class="meeting-nav-button ${record.id === activeMeetingRecordId ? "active" : ""}" type="button" data-meeting-id="${escapeHtml(record.id)}">
+            <span class="meeting-nav-date">${escapeHtml(record.date || "")}</span>
+            <strong>${escapeHtml(record.title || "")}</strong>
+            <small>${escapeHtml(record.badge || "會議紀錄")}</small>
+          </button>
+        `).join("")}
+      </aside>
+      <article class="meeting-detail">
+        <div class="meeting-detail-head">
+          <div class="meeting-detail-date">${escapeHtml(activeRecord.date || "")}</div>
           <div>
-            ${item.badge ? `<span class="micro-badge">${escapeHtml(item.badge)}</span>` : ""}
-            <h3>${escapeHtml(item.title)}</h3>
-            <p>${escapeHtml(item.summary)}</p>
-            <ul>${(item.bullets || []).map((bullet) => `<li>${escapeHtml(bullet)}</li>`).join("")}</ul>
+            ${activeRecord.badge ? `<span class="micro-badge">${escapeHtml(activeRecord.badge)}</span>` : ""}
+            <h3>${escapeHtml(activeRecord.title || "")}</h3>
+            <p>${escapeHtml(activeRecord.summary || "")}</p>
           </div>
-        </article>
-      `).join("")}
+        </div>
+        <ul>${(activeRecord.bullets || []).map((bullet) => `<li>${escapeHtml(bullet)}</li>`).join("")}</ul>
+      </article>
     </div>
   `;
+}
+
+function bindMeetingRecordEvents(view) {
+  const records = normalizeMeetingRecords(view);
+  if (!records.length) {
+    return;
+  }
+
+  viewContainer.querySelectorAll("[data-meeting-id]").forEach((button) => {
+    button.addEventListener("click", () => {
+      activeMeetingRecordId = button.dataset.meetingId;
+      renderActiveView(getActiveProject());
+    });
+  });
 }
 
 function renderActiveView(project) {
@@ -401,6 +455,10 @@ function renderActiveView(project) {
       ${content || `<div class="empty-card">這個分頁還沒有內容。</div>`}
     </article>
   `;
+
+  if (activeTabId === "meetings") {
+    bindMeetingRecordEvents(view);
+  }
 }
 
 function render() {
