@@ -40,6 +40,10 @@ try {
     Write-Step "Copy client report to gh-pages"
     Copy-Item $sourceFile (Join-Path $tempRoot "index.html") -Force
     Set-Content -Path (Join-Path $tempRoot ".nojekyll") -Value "" -Encoding UTF8
+    $warRoomTarget = Join-Path $tempRoot "war-room"
+    if (Test-Path $warRoomTarget) {
+        Remove-Item -Recurse -Force $warRoomTarget
+    }
 
     Write-Step "Check for changes"
     $pagesStatus = git -C $tempRoot status --short
@@ -61,5 +65,10 @@ try {
 }
 finally {
     Write-Step "Remove temp worktree"
-    git -C $RepoPath worktree remove $tempRoot --force | Out-Null
+    try {
+        git -C $RepoPath worktree remove $tempRoot --force | Out-Null
+    }
+    catch {
+        Write-Host "Temp worktree cleanup skipped: $($_.Exception.Message)" -ForegroundColor Yellow
+    }
 }
