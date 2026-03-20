@@ -114,6 +114,12 @@
     summary: "固定將業主版頁面發布到 GitHub Pages 的 SOP 與腳本。"
   },
   {
+    file: "docs/17_99yi_war_room_plan.md",
+    title: "99yi顧問小編 戰情室規劃",
+    tag: "War Room",
+    summary: "規劃給內部小編與顧問端使用的多專案靜態頁面，包括分頁架構、欄位與更新流程。"
+  },
+  {
     file: "meeting-reports/2026-03-20-owner-meeting-summary.md",
     title: "2026-03-20 業主會議紀錄",
     tag: "Meeting",
@@ -124,6 +130,12 @@
     title: "2026 Q2 社群內容規劃",
     tag: "Content",
     summary: "把貼文比例、每月節奏、題型方向與執行原則正式落成專案文件。"
+  },
+  {
+    file: "war-room/index.html",
+    title: "99yi顧問小編 戰情室",
+    tag: "War Room",
+    summary: "給內部小編與顧問端使用的多專案靜態頁面，集中管理會議、策略、議題與補件。"
   }
 ];
 

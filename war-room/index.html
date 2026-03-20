@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>99yi顧問小編 戰情室</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">99yi Internal Command Center</p>
+        <h1>99yi顧問小編 戰情室</h1>
+        <p class="topbar-copy">集中管理專案現況、業主資訊、會議紀錄、社群規劃與可執行議題。</p>
+      </div>
+      <div class="topbar-meta">
+        <div class="meta-card">
+          <span>最後更新</span>
+          <strong id="meta-updated-at">-</strong>
+        </div>
+        <div class="meta-card">
+          <span>資料截點</span>
+          <strong id="meta-cutoff">-</strong>
+        </div>
+        <div class="meta-card">
+          <span>版本</span>
+          <strong id="meta-version">-</strong>
+        </div>
+      </div>
+    </header>
+
+    <section class="project-strip">
+      <div class="strip-head">
+        <div>
+          <p class="section-kicker">Project Switch</p>
+          <h2>專案切換</h2>
+        </div>
+        <p>目前先載入百果山探索樂園，後續可用同一套結構擴充其他顧問專案。</p>
+      </div>
+      <div class="project-switcher" id="project-switcher"></div>
+    </section>
+
+    <section class="hero-panel">
+      <div class="hero-main">
+        <div class="hero-status-row">
+          <span class="status-badge" id="project-status-badge">-</span>
+          <span class="project-tag" id="project-tagline">-</span>
+        </div>
+        <h2 id="project-name">-</h2>
+        <p class="hero-summary" id="project-summary">-</p>
+        <div class="hero-actions">
+          <a class="action-link" href="../client-report/index.html" target="_blank" rel="noreferrer">開啟業主版報告</a>
+          <a class="action-link" href="../quarterly-reports/2026-q2-detailed-consulting-report.md" target="_blank" rel="noreferrer">開啟 Q2 詳細報告</a>
+          <a class="action-link" href="../meeting-reports/2026-03-20-owner-meeting-summary.md" target="_blank" rel="noreferrer">開啟最新會議紀錄</a>
+        </div>
+      </div>
+      <div class="hero-side" id="hero-side"></div>
+    </section>
+
+    <div class="workspace">
+      <aside class="sidebar">
+        <div class="sidebar-card">
+          <p class="section-kicker">Current Focus</p>
+          <h3>本期重點</h3>
+          <ul class="stack-list" id="current-focus-list"></ul>
+        </div>
+        <div class="sidebar-card">
+          <p class="section-kicker">This Week</p>
+          <h3>本週優先</h3>
+          <ul class="stack-list" id="this-week-list"></ul>
+        </div>
+        <div class="sidebar-card">
+          <p class="section-kicker">Need Attention</p>
+          <h3>待注意事項</h3>
+          <ul class="stack-list" id="alerts-list"></ul>
+        </div>
+      </aside>
+
+      <main class="content">
+        <nav class="tabbar" id="tabbar"></nav>
+        <section class="view-container" id="view-container"></section>
+      </main>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>

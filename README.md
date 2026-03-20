@@ -13,6 +13,7 @@
 - `quarterly-reports/`：季度顧問報告
 - `content-plans/`：社群與內容規劃
 - `client-report/`：業主版 HTML 報告頁
+- `war-room/`：內部用的 99yi顧問小編 戰情室
 
 ## 文件索引
 
@@ -32,11 +33,13 @@
 - `docs/14_consulting_report_framework.md`
 - `docs/15_operating_workflow.md`
 - `docs/16_pages_deployment_sop.md`
+- `docs/17_99yi_war_room_plan.md`
 - `meeting-reports/2026-03-20-owner-meeting-summary.md`
 - `meeting-reports/templates/meeting-report-template.md`
 - `monthly-reports/templates/monthly-report-template.md`
 - `content-plans/2026-q2-social-content-plan.md`
 - `client-report/index.html`
+- `war-room/index.html`
 - `scripts/publish-client-report.ps1`
 
 ## 使用方式
