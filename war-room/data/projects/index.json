@@ -1,0 +1,12 @@
+{
+  "projects": [
+    {
+      "id": "baiguoshan",
+      "file": "baiguoshan.json"
+    },
+    {
+      "id": "project-template",
+      "file": "project-template.json"
+    }
+  ]
+}
