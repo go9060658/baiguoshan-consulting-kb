@@ -3,9 +3,9 @@
   "name": "新專案模板",
   "tagline": "用來快速複製成下一個顧問專案",
   "status": "待建立",
-  "updatedAt": "2026-03-20 18:40:00 +08:00",
-  "dataCutoff": "2026-03-20 18:40:00 +08:00",
-  "version": "v0.2",
+  "updatedAt": "2026-03-20 15:19:29 +08:00",
+  "dataCutoff": "2026-03-20 15:19:29 +08:00",
+  "version": "v0.3",
   "summary": "這是一份內部模板，用來驗證戰情室是否能支援多專案切換。之後有新客戶時，直接複製這份 JSON 再填資料即可。",
   "links": [],
   "heroStats": [
@@ -45,14 +45,38 @@
     "建立新專案時，請先替換所有 placeholder 內容"
   ],
   "tabs": [
-    { "id": "overview", "label": "專案總覽" },
-    { "id": "owner", "label": "業主重點" },
-    { "id": "meetings", "label": "會議紀錄" },
-    { "id": "social", "label": "社群規劃" },
-    { "id": "inspiration", "label": "貼文靈感庫" },
-    { "id": "topics", "label": "可設計議題" },
-    { "id": "requests", "label": "待補資料" },
-    { "id": "updates", "label": "更新日誌" }
+    {
+      "id": "overview",
+      "label": "專案總覽"
+    },
+    {
+      "id": "owner",
+      "label": "業主重點"
+    },
+    {
+      "id": "meetings",
+      "label": "會議紀錄"
+    },
+    {
+      "id": "social",
+      "label": "社群規劃"
+    },
+    {
+      "id": "inspiration",
+      "label": "貼文靈感庫"
+    },
+    {
+      "id": "topics",
+      "label": "可設計議題"
+    },
+    {
+      "id": "requests",
+      "label": "待補資料"
+    },
+    {
+      "id": "updates",
+      "label": "更新日誌"
+    }
   ],
   "views": {
     "overview": {
@@ -107,18 +131,19 @@
       ]
     },
     "meetings": {
-      "title": "會議紀錄",
-      "intro": "會議完後請補完整版本，至少要有數據、判斷、要求與待辦。",
-      "timeline": [
+      "title": "????",
+      "intro": "?????????????????????????",
+      "records": [
         {
-          "date": "待補日期",
-          "badge": "模板",
-          "title": "第一次會議紀錄",
-          "summary": "請把會議的背景、重點與結論填進來。",
+          "id": "meeting-template-1",
+          "date": "????",
+          "badge": "??",
+          "title": "???????",
+          "summary": "???????????????????",
           "bullets": [
-            "填會議中的真實數字",
-            "填業主的營運判斷",
-            "填後續要追的資料"
+            "??????????",
+            "?????????",
+            "?????????"
           ]
         }
       ]
