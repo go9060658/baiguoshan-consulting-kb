@@ -21,6 +21,7 @@ const TAB_HELPERS = {
   owner: "業主溝通口徑與核心判斷",
   meetings: "已開會紀錄與待確認事項",
   social: "最新社群規劃與檔期節奏",
+  inspiration: "可直接交給小編的貼文靈感",
   topics: "可交付給設計與小編的題型",
   requests: "後續待補資料與追資料清單",
   updates: "本專案最近更新了什麼"
@@ -191,6 +192,14 @@ function renderProjectMeta(project) {
     `);
   }
 
+  if ((project.tabs || []).some((tab) => tab.id === "inspiration")) {
+    actionMarkup.push(`
+      <button class="action-button" type="button" data-action-tab="inspiration">
+        看貼文靈感
+      </button>
+    `);
+  }
+
   if ((project.tabs || []).some((tab) => tab.id === "requests")) {
     actionMarkup.push(`
       <button class="action-button" type="button" data-action-tab="requests">
@@ -282,6 +291,25 @@ function renderTopicsView(view) {
   `;
 }
 
+function renderInspirationView(view) {
+  return `
+    <div class="topic-grid inspiration-grid">
+      ${(view.ideas || []).map((idea) => `
+        <article class="topic-card inspiration-card">
+          <div class="tag-row">
+            <span class="tag ${escapeHtml(idea.status)}">${escapeHtml(TOPIC_STATUS_LABEL[idea.status] || idea.status)}</span>
+            <span class="tag">${escapeHtml(idea.category)}</span>
+            <span class="tag">${escapeHtml(idea.format)}</span>
+          </div>
+          <h3>${escapeHtml(idea.title)}</h3>
+          <p>${escapeHtml(idea.summary)}</p>
+          <ul>${(idea.angles || []).map((angle) => `<li>${escapeHtml(angle)}</li>`).join("")}</ul>
+        </article>
+      `).join("")}
+    </div>
+  `;
+}
+
 function renderRequestsView(view) {
   return `
     <div class="request-grid">
@@ -349,6 +377,8 @@ function renderActiveView(project) {
 
   if (Array.isArray(view.sections)) {
     content = view.sections.map(renderSectionBlock).join("");
+  } else if (activeTabId === "inspiration") {
+    content = renderInspirationView(view);
   } else if (activeTabId === "topics") {
     content = renderTopicsView(view);
   } else if (activeTabId === "requests") {
