@@ -15,9 +15,9 @@ if (-not (Test-Path $RepoPath)) {
     throw "Repo path not found: $RepoPath"
 }
 
-$sourceFile = Join-Path $RepoPath "client-report\index.html"
-if (-not (Test-Path $sourceFile)) {
-    throw "Client report page not found: $sourceFile"
+$clientReportSource = Join-Path $RepoPath "client-report"
+if (-not (Test-Path $clientReportSource)) {
+    throw "Client report folder not found: $clientReportSource"
 }
 
 $warRoomSource = Join-Path $RepoPath "war-room"
@@ -43,7 +43,9 @@ git -C $RepoPath worktree add $tempRoot $PagesBranch | Out-Null
 
 try {
     Write-Step "Copy client report to gh-pages root"
-    Copy-Item $sourceFile (Join-Path $tempRoot "index.html") -Force
+    Get-ChildItem -Path $clientReportSource -Force | ForEach-Object {
+        Copy-Item $_.FullName -Destination $tempRoot -Recurse -Force
+    }
     Set-Content -Path (Join-Path $tempRoot ".nojekyll") -Value "" -Encoding UTF8
 
     $warRoomTarget = Join-Path $tempRoot "war-room"
@@ -62,7 +64,7 @@ try {
     }
 
     Write-Step "Commit gh-pages update"
-    git -C $tempRoot add index.html .nojekyll war-room
+    git -C $tempRoot add -A .
     $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss zzz"
     git -C $tempRoot commit -m "更新業主頁與戰情室 ($timestamp)" | Out-Null
 
