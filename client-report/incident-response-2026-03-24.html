@@ -297,6 +297,49 @@
       padding-left: 20px;
     }
 
+    .statement-card {
+      padding: 0;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(169, 93, 84, 0.16);
+      background: linear-gradient(180deg, #fffdfb, #fff6f2);
+    }
+
+    .statement-head {
+      padding: 18px 22px;
+      background: linear-gradient(135deg, rgba(169,93,84,0.12), rgba(195,154,91,0.12));
+      border-bottom: 1px solid rgba(169, 93, 84, 0.12);
+    }
+
+    .statement-head span {
+      display: inline-flex;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(169, 93, 84, 0.12);
+      color: var(--rose);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .statement-body {
+      padding: 24px 22px 26px;
+      color: var(--muted);
+    }
+
+    .statement-body p + p,
+    .statement-body p + ol,
+    .statement-body ol + p {
+      margin-top: 14px;
+    }
+
+    .statement-body ol {
+      margin: 14px 0 0;
+      padding-left: 22px;
+    }
+
     .footer-note {
       margin-top: 18px;
       padding: 18px 22px;
@@ -523,6 +566,34 @@
           <p>整理目前已完成的道歉、聯繫、關心、保險或協助安排，作為後續說明基礎。</p>
         </article>
       </div>
+    </section>
+
+    <section class="section panel">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Draft Statement</div>
+          <h2>預計發布的 Facebook 聲明稿</h2>
+        </div>
+        <p>此區塊提供業主直接確認文案方向。若需調整語氣、細節或改善項目，可在發布前再修正。</p>
+      </div>
+      <article class="statement-card">
+        <div class="statement-head">
+          <span>Draft v1</span>
+          <h3>官方 Facebook 聲明稿建議版本</h3>
+        </div>
+        <div class="statement-body">
+          <p>針對今日園區內發生的孩童受傷事件，我們非常重視，也對孩子受傷及家長受到驚嚇與不安，表達誠摯的關心與歉意。</p>
+          <p>事件發生後，園區已立即啟動內部了解與流程檢視，並持續與家屬聯繫，關心孩子目前狀況。對於現場第一時間的處理與溝通，若未能讓家長感受到足夠協助與安心，這是園區必須檢討與改善的地方。</p>
+          <p>目前園區已著手針對以下事項進行檢視與加強：</p>
+          <ol>
+            <li>設施搭乘前的口頭提醒與安全確認</li>
+            <li>現場工作人員的引導、控場與應變教育</li>
+            <li>意外發生時的急救、通報與後送流程</li>
+            <li>家屬關懷與後續聯繫機制</li>
+          </ol>
+          <p>孩子的安全始終是園區最重視的事。對於本次事件造成家屬不安，我們再次表達歉意，也會以更嚴謹的方式檢視與補強現場流程，避免類似情況再次發生。</p>
+        </div>
+      </article>
     </section>
 
     <section class="summary-panel panel">
