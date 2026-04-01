@@ -327,6 +327,12 @@ function renderInspirationView(view) {
           </div>
           <h3>${escapeHtml(idea.title)}</h3>
           <p>${escapeHtml(idea.summary)}</p>
+          ${idea.copy ? `
+            <div class="copy-block">
+              <span>建議貼文文案</span>
+              <p>${escapeHtml(idea.copy).replaceAll("\n", "<br>")}</p>
+            </div>
+          ` : ""}
           <ul>${(idea.angles || []).map((angle) => `<li>${escapeHtml(angle)}</li>`).join("")}</ul>
         </article>
       `).join("")}
