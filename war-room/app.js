@@ -21,6 +21,7 @@ const TAB_HELPERS = {
   owner: "業主溝通口徑與核心判斷",
   meetings: "已開會紀錄與待確認事項",
   social: "最新社群規劃與檔期節奏",
+  scheduled: "已決定要發的貼文與排程細節",
   inspiration: "可直接交給小編的貼文靈感",
   topics: "可交付給設計與小編的題型",
   requests: "後續待補資料與追資料清單",
@@ -210,6 +211,14 @@ function renderProjectMeta(project) {
     `);
   }
 
+  if ((project.tabs || []).some((tab) => tab.id === "scheduled")) {
+    actionMarkup.push(`
+      <button class="action-button" type="button" data-action-tab="scheduled">
+        看預計發布
+      </button>
+    `);
+  }
+
   if ((project.tabs || []).some((tab) => tab.id === "inspiration")) {
     actionMarkup.push(`
       <button class="action-button" type="button" data-action-tab="inspiration">
@@ -362,6 +371,47 @@ function renderRequestsView(view) {
   `;
 }
 
+function renderScheduledView(view) {
+  return `
+    <div class="schedule-grid">
+      ${(view.posts || []).map((post) => `
+        <article class="schedule-card">
+          <div class="tag-row">
+            <span class="tag">${escapeHtml(post.status || "待安排")}</span>
+            ${post.platform ? `<span class="tag">${escapeHtml(post.platform)}</span>` : ""}
+            ${post.format ? `<span class="tag">${escapeHtml(post.format)}</span>` : ""}
+          </div>
+          <h3>${escapeHtml(post.title)}</h3>
+          <div class="schedule-meta">
+            ${post.publishAt ? `<p><strong>預計發布：</strong>${escapeHtml(post.publishAt)}</p>` : ""}
+            ${post.asset ? `<p><strong>素材需求：</strong>${escapeHtml(post.asset)}</p>` : ""}
+            ${post.owner ? `<p><strong>負責：</strong>${escapeHtml(post.owner)}</p>` : ""}
+          </div>
+          ${post.goal ? `<p>${escapeHtml(post.goal)}</p>` : ""}
+          ${(post.copy || post.caption) ? `
+            <div class="copy-block">
+              <span>預計發布文案</span>
+              <p>${escapeHtml(post.copy || post.caption).replaceAll("\n", "<br>")}</p>
+            </div>
+          ` : ""}
+          ${(post.notes || []).length ? `
+            <div class="angle-block">
+              <span>執行備註</span>
+              <ul>${post.notes.map((note) => `<li>${escapeHtml(note)}</li>`).join("")}</ul>
+            </div>
+          ` : ""}
+          ${(post.titleOptions || []).length ? `
+            <div class="angle-block">
+              <span>標題參考靈感</span>
+              <ul>${post.titleOptions.map((title) => `<li>${escapeHtml(title)}</li>`).join("")}</ul>
+            </div>
+          ` : ""}
+        </article>
+      `).join("")}
+    </div>
+  `;
+}
+
 function renderUpdatesView(view) {
   return `
     <div class="timeline">
@@ -442,6 +492,8 @@ function renderActiveView(project) {
 
   if (Array.isArray(view.sections)) {
     content = view.sections.map(renderSectionBlock).join("");
+  } else if (activeTabId === "scheduled") {
+    content = renderScheduledView(view);
   } else if (activeTabId === "inspiration") {
     content = renderInspirationView(view);
   } else if (activeTabId === "topics") {
