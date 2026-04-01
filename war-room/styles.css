@@ -687,6 +687,23 @@ button {
   white-space: normal;
 }
 
+.angle-block {
+  margin-top: 14px;
+}
+
+.angle-block span {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.angle-block ul {
+  margin-top: 0;
+}
+
 .meeting-layout {
   display: grid;
   grid-template-columns: 320px minmax(0, 1fr);
