@@ -333,7 +333,12 @@ function renderInspirationView(view) {
               <p>${escapeHtml(idea.copy).replaceAll("\n", "<br>")}</p>
             </div>
           ` : ""}
-          <ul>${(idea.angles || []).map((angle) => `<li>${escapeHtml(angle)}</li>`).join("")}</ul>
+          ${(idea.angles || []).length ? `
+            <div class="angle-block">
+              <span>標題參考靈感</span>
+              <ul>${idea.angles.map((angle) => `<li>${escapeHtml(angle)}</li>`).join("")}</ul>
+            </div>
+          ` : ""}
         </article>
       `).join("")}
     </div>
