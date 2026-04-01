@@ -530,7 +530,8 @@ button {
 .grid-4,
 .timeline,
 .topic-grid,
-.request-grid {
+.request-grid,
+.schedule-grid {
   display: grid;
   gap: 16px;
 }
@@ -552,7 +553,8 @@ button {
 }
 
 .topic-grid,
-.request-grid {
+.request-grid,
+.schedule-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
@@ -560,6 +562,7 @@ button {
 .timeline-item,
 .topic-card,
 .request-card,
+.schedule-card,
 .update-card {
   padding: 22px;
   border-radius: var(--radius-lg);
@@ -702,6 +705,32 @@ button {
 
 .angle-block ul {
   margin-top: 0;
+}
+
+.schedule-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.schedule-card::after {
+  content: "";
+  position: absolute;
+  inset: auto auto -52px -42px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(189, 232, 255, 0.3), transparent 70%);
+  pointer-events: none;
+}
+
+.schedule-meta {
+  display: grid;
+  gap: 6px;
+  margin: 12px 0 14px;
+}
+
+.schedule-meta p {
+  color: var(--text-soft);
 }
 
 .meeting-layout {
