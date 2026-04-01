@@ -44,6 +44,7 @@ let activeProjectId = "";
 let activeTabId = "";
 let activeMeetingRecordId = "";
 let isProjectMenuOpen = false;
+const CACHE_BUST = "20260401c";
 
 function escapeHtml(value) {
   return String(value ?? "")
@@ -55,7 +56,9 @@ function escapeHtml(value) {
 }
 
 async function loadProjects() {
-  const manifestResponse = await fetch("./data/projects/index.json");
+  const manifestResponse = await fetch(`./data/projects/index.json?v=${CACHE_BUST}`, {
+    cache: "no-store"
+  });
   if (!manifestResponse.ok) {
     throw new Error("無法讀取專案索引。");
   }
@@ -63,7 +66,9 @@ async function loadProjects() {
   const manifest = await manifestResponse.json();
   const loadedProjects = await Promise.all(
     manifest.projects.map(async (item) => {
-      const response = await fetch(`./data/projects/${item.file}`);
+      const response = await fetch(`./data/projects/${item.file}?v=${CACHE_BUST}`, {
+        cache: "no-store"
+      });
       if (!response.ok) {
         throw new Error(`無法讀取專案資料：${item.file}`);
       }
