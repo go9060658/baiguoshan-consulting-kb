@@ -405,6 +405,12 @@ function renderScheduledView(view) {
               <ul>${post.notes.map((note) => `<li>${escapeHtml(note)}</li>`).join("")}</ul>
             </div>
           ` : ""}
+          ${(post.imageSuggestions || []).length ? `
+            <div class="angle-block">
+              <span>圖片素材建議</span>
+              <ul>${post.imageSuggestions.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+            </div>
+          ` : ""}
           ${(post.titleOptions || []).length ? `
             <div class="angle-block">
               <span>標題參考靈感</span>
