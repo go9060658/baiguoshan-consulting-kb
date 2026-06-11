@@ -291,6 +291,62 @@
       border: 1px solid rgba(91, 156, 255, 0.14);
     }
 
+    .copy-stack {
+      display: grid;
+      gap: 16px;
+    }
+
+    .copy-card {
+      padding: 22px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(248,252,255,0.92));
+      border: 1px solid var(--line);
+    }
+
+    .copy-card p + p {
+      margin-top: 12px;
+    }
+
+    .visual-hero {
+      overflow: hidden;
+    }
+
+    .visual-hero img,
+    .visual-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+    }
+
+    .visual-hero img {
+      border-radius: 28px;
+    }
+
+    .visual-caption {
+      margin-top: 14px;
+      color: var(--muted);
+    }
+
+    .visual-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .visual-card {
+      padding: 18px;
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.92);
+      border: 1px solid var(--line);
+    }
+
+    .visual-card h3 {
+      margin: 12px 0 8px;
+    }
+
     .footer-note {
       margin-top: 18px;
       padding: 22px 24px;
@@ -305,7 +361,8 @@
       .grid-4,
       .grid-3,
       .grid-2,
-      .timeline {
+      .timeline,
+      .visual-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -519,6 +576,87 @@
       <div class="highlight" style="margin-top:16px;">
         <h3 style="margin-bottom:8px;">互動延伸貼文</h3>
         <p>建議再補一篇「曬出你家寶貝的戲水時刻」，收集家長照片與留言，讓戲水館的聲量不只停在開放當天。</p>
+      </div>
+    </section>
+
+    <section class="panel section">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Copy Options</div>
+          <h2>第一則貼文文案版本</h2>
+        </div>
+        <p>以下四個版本都適合搭配預熱圖使用，差異在於語氣輕重與資訊露出程度，可依業主偏好或當天選定素材再收斂。</p>
+      </div>
+      <div class="copy-stack">
+        <article class="copy-card">
+          <h3>版本 A｜親子清涼感</h3>
+          <p>天氣慢慢熱起來了，百果山也準備把夏天最需要的清涼感帶進園區。</p>
+          <p>接下來，我們即將迎來一個很適合親子家庭的新空間，讓小朋友可以開心玩水、家長也多一個舒服停留的放電點。</p>
+          <p>小鴨戲水館，即將開放。</p>
+          <p>更多開放資訊，我們會再陸續和大家分享，記得先把這則貼文收藏起來。</p>
+        </article>
+        <article class="copy-card">
+          <h3>版本 B｜預熱期待感</h3>
+          <p>夏天快到了，小朋友期待的清涼時刻，也準備在百果山登場。</p>
+          <p>我們正在為親子家庭準備一個新的玩水空間，讓這個夏天不只是來玩，也能多一點舒服、多一點清涼。</p>
+          <p>小鴨戲水館，快要和大家見面了。</p>
+          <p>想第一時間知道開放消息，記得持續鎖定粉絲頁。</p>
+        </article>
+        <article class="copy-card">
+          <h3>版本 C｜名稱亮相版</h3>
+          <p>今年夏天，百果山多了一個新的親子清涼選擇。</p>
+          <p>小朋友可以玩水放電，家長也能多一個輕鬆停留的地方。</p>
+          <p>我們即將開放的，就是小鴨戲水館。</p>
+          <p>正式開放時間與後續活動資訊，接下來會再陸續公告。</p>
+        </article>
+        <article class="copy-card">
+          <h3>版本 D｜品牌感較高版</h3>
+          <p>當天氣越來越熱，大家對親子出遊的期待，也會多一份「想找個可以清涼一下的地方」。</p>
+          <p>這個夏天，百果山準備了一個新的戲水空間，讓親子家庭在園區裡，也能留下更輕鬆、更舒服的夏日回憶。</p>
+          <p>小鴨戲水館，即將開放。</p>
+          <p>如果你也正在安排夏天的親子行程，這一站可以先收藏起來。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel section">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Event-Day Mockup</div>
+          <h2>活動當天現場感示意</h2>
+        </div>
+        <p>這張示意圖不是要取代真實照片，而是幫業主預先理解：當天如果依照目前規劃執行，現場會更接近什麼樣的氛圍與記憶點。</p>
+      </div>
+      <div class="visual-hero">
+        <img src="./assets/duck-water-play/event-day-scene.png" alt="小鴨戲水館活動當天現場感示意">
+        <p class="visual-caption">情境設定：真實半球場館結構、親子玩水互動、少量小鴨識別元素、整體乾淨明亮，重點是「看起來真的能發生」，而不是過度舞台化。</p>
+      </div>
+    </section>
+
+    <section class="panel section">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Event Materials</div>
+          <h2>當天可使用的周邊與印刷物</h2>
+        </div>
+        <p>這些物料的功能不是只是好看，而是讓活動當天的辨識、兌換、打卡與現場體驗更完整，也讓家長拍照時更容易形成記憶點。</p>
+      </div>
+      <div class="visual-grid">
+        <article class="visual-card">
+          <img src="./assets/duck-water-play/event-stickers.png" alt="小鴨戲水館活動貼紙示意">
+          <h3>活動貼紙</h3>
+          <p>可作為入場小禮、打卡贈品或小朋友活動紀念，成本低、辨識度高，也最容易快速上線。</p>
+        </article>
+        <article class="visual-card">
+          <img src="./assets/duck-water-play/event-dm-flyer.png" alt="小鴨戲水館 DM 示意">
+          <h3>DM / 小型宣傳單頁</h3>
+          <p>適合放在售票處、服務台或入口桌面，用來講清楚活動主軸、亮點與簡單玩法。</p>
+        </article>
+        <article class="visual-card">
+          <img src="./assets/duck-water-play/event-collateral.png" alt="小鴨戲水館活動識別物示意">
+          <h3>兌換卡與桌牌</h3>
+          <p>適合搭配送小鴨、打卡換禮或當天識別流程使用，讓現場執行更有活動感，也降低口頭說明成本。</p>
+        </article>
       </div>
     </section>
 
