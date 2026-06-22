@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>百果山探索樂園｜彩虹滑道安全溝通優化建議</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f6f8f4;
+      --bg2: #fff7ea;
+      --ink: #172033;
+      --muted: #647084;
+      --line: rgba(23, 32, 51, 0.11);
+      --card: rgba(255,255,255,0.9);
+      --forest: #1f6f50;
+      --forest2: #0d4735;
+      --mint: #dff6ea;
+      --blue: #2d83e6;
+      --blue2: #0c5fb3;
+      --blueSoft: #eaf4ff;
+      --red: #d93c40;
+      --redSoft: #fff0ef;
+      --orange: #ef8b25;
+      --orangeSoft: #fff0dd;
+      --yellow: #ffd46a;
+      --shadow: 0 28px 70px rgba(54, 82, 72, 0.13);
+      --radius: 32px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Sans TC", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(255, 212, 106, 0.28), transparent 24%),
+        radial-gradient(circle at top right, rgba(45, 131, 230, 0.16), transparent 26%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.12;
+      font-family: "Noto Serif TC", serif;
+    }
+
+    p, li {
+      margin: 0;
+      line-height: 1.85;
+    }
+
+    a { color: inherit; }
+
+    .page {
+      width: min(1240px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 24px 0 72px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px);
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+      padding: 14px 18px;
+    }
+
+    .brand {
+      color: var(--forest);
+      font-weight: 900;
+      letter-spacing: 0.03em;
+    }
+
+    .version {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .hero-main {
+      padding: 38px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.96), rgba(255,255,255,0.72)),
+        linear-gradient(135deg, rgba(31,111,80,0.12), rgba(255,212,106,0.14));
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      margin-bottom: 16px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      color: var(--forest);
+      background: rgba(31, 111, 80, 0.1);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+    }
+
+    .hero h1 {
+      margin-bottom: 16px;
+      font-size: clamp(38px, 5vw, 72px);
+    }
+
+    .hero-intro {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(23, 32, 51, 0.06);
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .hero-visual {
+      overflow: hidden;
+      min-height: 540px;
+      background: #fff;
+    }
+
+    .hero-visual img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .section {
+      margin-top: 18px;
+      padding: 30px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .kicker {
+      margin-bottom: 10px;
+      color: var(--forest);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+    }
+
+    .section-head p {
+      max-width: 720px;
+      color: var(--muted);
+    }
+
+    .grid-2, .grid-3, .grid-4 {
+      display: grid;
+      gap: 16px;
+    }
+
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+    .card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255,255,255,0.76);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    .card p, .card li {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .card ul {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      margin-bottom: 16px;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--forest);
+      font-weight: 900;
+    }
+
+    .warning {
+      border-color: rgba(217,60,64,0.18);
+      background: var(--redSoft);
+    }
+
+    .blue {
+      border-color: rgba(45,131,230,0.18);
+      background: var(--blueSoft);
+    }
+
+    .orange {
+      border-color: rgba(239,139,37,0.22);
+      background: var(--orangeSoft);
+    }
+
+    .visual-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .visual-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: #fff;
+      box-shadow: 0 20px 46px rgba(34, 68, 88, 0.1);
+    }
+
+    .visual-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+    }
+
+    .visual-caption {
+      padding: 16px 18px 18px;
+    }
+
+    .visual-caption strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 16px;
+    }
+
+    .visual-caption span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .process {
+      display: grid;
+      gap: 14px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 18px;
+      align-items: start;
+      padding: 20px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.72);
+    }
+
+    .step strong {
+      color: var(--forest);
+      font-size: 15px;
+      letter-spacing: 0.04em;
+    }
+
+    .step h3 {
+      margin-bottom: 8px;
+      font-size: 22px;
+    }
+
+    .script {
+      display: grid;
+      gap: 12px;
+      padding: 20px;
+      border-radius: 24px;
+      background: #111c2f;
+      color: #fff;
+    }
+
+    .script p {
+      color: rgba(255,255,255,0.86);
+      font-size: 16px;
+    }
+
+    .script .line {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.92);
+      font-weight: 700;
+    }
+
+    .quote {
+      padding: 24px;
+      border-radius: 24px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--forest2), var(--forest));
+    }
+
+    .quote p {
+      color: rgba(255,255,255,0.88);
+    }
+
+    .table {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255,255,255,0.76);
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 0.9fr 1.4fr 1.2fr;
+      gap: 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .row:last-child { border-bottom: 0; }
+
+    .row > div {
+      padding: 16px 18px;
+      border-right: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .row > div:last-child { border-right: 0; }
+
+    .row.head > div {
+      color: var(--ink);
+      background: rgba(31,111,80,0.08);
+      font-weight: 900;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .grid-2,
+      .grid-3,
+      .grid-4,
+      .visual-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .step {
+        grid-template-columns: 1fr;
+      }
+
+      .row {
+        grid-template-columns: 1fr;
+      }
+
+      .row > div {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .row > div:last-child {
+        border-bottom: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar panel">
+      <div class="brand">百果山探索樂園｜顧問建議報告</div>
+      <div class="version">更新時間：2026-06-22 21:56</div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-main panel">
+        <div class="eyebrow">Rainbow Slide Safety System</div>
+        <h1>彩虹滑道安全溝通優化建議</h1>
+        <p class="hero-intro">
+          本次建議重點不是把責任單方面推給遊客，而是建立一套「搭乘前充分告知、現場確實確認、發生狀況能立即支援」的安全溝通系統。讓遊客在搭乘前理解規範與風險，也讓園區現場人員有一致的引導流程。
+        </p>
+        <div class="hero-meta">
+          <span class="pill">適用設施：彩虹滑道</span>
+          <span class="pill">核心目標：降低受傷與客訴風險</span>
+          <span class="pill">執行方向：告示 + 話術 + 語音提醒 + 醫護支援</span>
+        </div>
+      </div>
+      <div class="hero-visual panel">
+        <img src="assets/rainbow-slide-safety-2026-06-22/image2-final/01-correct-riding-posture.png" alt="彩虹滑道正確搭乘示意">
+      </div>
+    </section>
+
+    <section class="section panel">
+      <div class="section-head">
+        <div>
+          <div class="kicker">01 / 核心判斷</div>
+          <h2>不建議使用「概不負責」式切結書</h2>
+        </div>
+        <p>切結書可以作為補充，但不應成為主要溝通方式。對親子樂園來說，過度法律化的文字容易讓遊客感覺園區在推卸責任，反而提高負面情緒。</p>
+      </div>
+      <div class="grid-3">
+        <article class="card warning">
+          <span class="num" style="background: var(--red);">1</span>
+          <h3>容易被解讀為推責</h3>
+          <p>「園區概不負責」會讓家長認為園區只想規避責任，而不是優先守護孩子安全。</p>
+        </article>
+        <article class="card orange">
+          <span class="num" style="background: var(--orange);">2</span>
+          <h3>無法取代現場管理</h3>
+          <p>即使有簽署文件，若現場沒有清楚告示、員工確認與終點控場，仍會被認為管理不足。</p>
+        </article>
+        <article class="card blue">
+          <span class="num" style="background: var(--blue);">3</span>
+          <h3>建議改為安全確認制</h3>
+          <p>以「已閱讀規範、願意配合、由工作人員確認後出發」取代生硬免責文字，接受度會更高。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section panel">
+      <div class="section-head">
+        <div>
+          <div class="kicker">02 / 建議系統</div>
+          <h2>建立四層安全溝通機制</h2>
+        </div>
+        <p>建議把彩虹滑道安全溝通拆成四個接觸點，讓遊客在排隊前、排隊中、出發前、滑行後都接收到一致訊息。</p>
+      </div>
+      <div class="grid-4">
+        <article class="card">
+          <span class="num">1</span>
+          <h3>排隊前告示</h3>
+          <p>用圖像說明正確姿勢、常見風險與搭乘前需接受的基本規範。</p>
+        </article>
+        <article class="card">
+          <span class="num">2</span>
+          <h3>排隊區語音</h3>
+          <p>透過連續播放的大聲公提醒規則，讓遊客在等待時反覆聽到安全資訊。</p>
+        </article>
+        <article class="card">
+          <span class="num">3</span>
+          <h3>出發前確認</h3>
+          <p>工作人員以固定話術確認坐姿、手部、腳部與終點區狀態。</p>
+        </article>
+        <article class="card">
+          <span class="num">4</span>
+          <h3>醫護站支援</h3>
+          <p>明確告知如有不適或意外狀況，可立即通知工作人員並由醫護站協助。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section panel">
+      <div class="section-head">
+        <div>
+          <div class="kicker">03 / 現場溝通設計</div>
+          <h2>建議導入的現場安全圖像</h2>
+        </div>
+        <p>以下圖像呈現建議導入後的現場溝通方向，重點在於讓遊客在排隊、搭乘前與需要協助時，都能快速理解規範與支援方式。</p>
+      </div>
+      <div class="visual-grid">
+        <article class="visual-card">
+          <img src="assets/rainbow-slide-safety-2026-06-22/image2-final/01-correct-riding-posture.png" alt="正確搭乘姿勢">
+          <div class="visual-caption">
+            <strong>正確搭乘姿勢</strong>
+            <span>強調坐穩、握把、雙腳向前與工作人員確認。</span>
+          </div>
+        </article>
+        <article class="visual-card">
+          <img src="assets/rainbow-slide-safety-2026-06-22/image2-final/02-risk-awareness-visual.png" alt="常見風險提醒">
+          <div class="visual-caption">
+            <strong>常見風險提醒</strong>
+            <span>用非血腥圖示提醒錯誤姿勢可能造成的風險。</span>
+          </div>
+        </article>
+        <article class="visual-card">
+          <img src="assets/rainbow-slide-safety-2026-06-22/image2-final/03-medical-station-support.png" alt="醫護站支援">
+          <div class="visual-caption">
+            <strong>醫護站支援</strong>
+            <span>傳達園區已有現場支援，不讓遊客感覺無人處理。</span>
+          </div>
+        </article>
+        <article class="visual-card">
+          <img src="assets/rainbow-slide-safety-2026-06-22/image2-final/04-audio-broadcast-system.png" alt="語音提醒播放">
+          <div class="visual-caption">
+            <strong>語音提醒播放</strong>
+            <span>排隊區循環播放安全提醒，讓規則被反覆接收。</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section panel">
+      <div class="section-head">
+        <div>
+          <div class="kicker">03-1 / 現場告示建議</div>
+          <h2>現場告示板建議樣式</h2>
+        </div>
+        <p>以下為建議張貼於排隊區、出發平台與動線節點的告示樣式。正式製作前，建議依園區現場規範完成最後確認，確保文字、標點與實際執行方式一致。</p>
+      </div>
+      <div class="visual-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <article class="visual-card">
+          <img src="assets/rainbow-slide-safety-2026-06-22/image2-signage-reference/01-safety-overview-signage-reference.png" alt="安全告示總覽參考">
+          <div class="visual-caption">
+            <strong>安全告示總覽</strong>
+            <span>適合放在排隊入口，先建立「安全第一、共同配合」的整體認知。</span>
+          </div>
+        </article>
+        <article class="visual-card">
+          <img src="assets/rainbow-slide-safety-2026-06-22/image2-signage-reference/02-queue-instruction-signage-reference.png" alt="排隊區圖解告示參考">
+          <div class="visual-caption">
+            <strong>排隊區圖解告示</strong>
+            <span>適合放在排隊動線，讓遊客等待時先看懂出發前確認項目。</span>
+          </div>
+        </article>
+        <article class="visual-card">
+          <img src="assets/rainbow-slide-safety-2026-06-22/image2-signage-reference/03-correct-wrong-posture-signage-reference.png" alt="正確與錯誤姿勢告示參考">
+          <div class="visual-caption">
+            <strong>正確 / 錯誤姿勢對照</strong>
+            <span>適合放在出發平台前方，提醒坐姿、握把、腳部位置與禁止動作。</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section panel">
+      <div class="section-head">
+        <div>
+          <div class="kicker">04 / 大聲公連續播放規劃</div>
+          <h2>建議導入排隊區語音提醒</h2>
+        </div>
+        <p>建議納入排隊區語音提醒。語音提醒比單純告示更容易被接收，也能降低「不清楚規則」造成的溝通落差。執行時需維持親切語氣、清楚規則與適當播放頻率，避免干擾整體遊園體驗。</p>
+      </div>
+      <div class="grid-2">
+        <article class="card blue">
+          <h3>建議設置方式</h3>
+          <ul>
+            <li>設置位置：彩虹滑道排隊入口、出發平台附近。</li>
+            <li>播放頻率：每 3 至 5 分鐘播放一次，尖峰時段可提高頻率。</li>
+            <li>音量原則：排隊區清楚聽見即可，不建議擴散到整個園區。</li>
+            <li>播放內容：風險告知、正確姿勢、出發前確認、終點區離開、醫護站支援。</li>
+          </ul>
+        </article>
+        <article class="card orange">
+          <h3>導入價值</h3>
+          <ul>
+            <li>讓遊客搭乘前已被充分提醒。</li>
+            <li>協助工作人員減少重複說明壓力。</li>
+            <li>讓家長更清楚自身也有配合義務。</li>
+            <li>若後續發生爭議，園區能提出已告知與已提醒的現場證明。</li>
+          </ul>
+        </article>
+      </div>
+      <div style="height:16px"></div>
+      <div class="script">
+        <h3>建議語音播放稿</h3>
+        <p>以下文案可錄成 30 至 40 秒版本，於排隊區循環播放。</p>
+        <div class="line">各位遊客您好，彩虹滑道屬於滑行類遊樂設施，搭乘時仍有一定風險。請確認可以接受並願意遵守搭乘規範後，再排隊遊玩。</div>
+        <div class="line">搭乘時請坐在泳圈中央，雙手全程握緊把手，雙腳向前放在指定位置，請勿外翻、拖地、轉身或滑行中自行調整姿勢。</div>
+        <div class="line">小朋友搭乘時，請家長協助確認坐姿與雙腳位置，並配合現場工作人員引導。若姿勢未符合規範，工作人員會先協助調整後再出發。</div>
+        <div class="line">滑行結束後，請立即離開終點區，避免影響後方遊客安全。如有身體不適或意外狀況，請立即通知現場工作人員，園區醫護站將協助處理。</div>
+      </div>
+    </section>
+
+    <section class="section panel">
+      <div class="section-head">
+        <div>
+          <div class="kicker">05 / 現場執行流程</div>
+          <h2>建議標準作業流程</h2>
+        </div>
+        <p>流程設計的重點是讓「安全告知」不是只貼在牆上，而是落實到工作人員的每一組出發確認。</p>
+      </div>
+      <div class="process">
+        <div class="step">
+          <strong>STEP 01</strong>
+          <div>
+            <h3>排隊入口：先告知風險</h3>
+            <p>入口處張貼「遊樂設施有一定風險，請確認可接受並遵守規範後再遊玩」告示，搭配常見錯誤姿勢圖。</p>
+          </div>
+        </div>
+        <div class="step">
+          <strong>STEP 02</strong>
+          <div>
+            <h3>排隊中：語音循環提醒</h3>
+            <p>排隊區以大聲公或定向喇叭播放搭乘規則，讓等待遊客反覆接收正確姿勢與風險提醒。</p>
+          </div>
+        </div>
+        <div class="step">
+          <strong>STEP 03</strong>
+          <div>
+            <h3>出發前：工作人員口頭確認</h3>
+            <p>每組出發前確認「坐穩中央、雙手握緊、雙腳向前、終點區清空」。未完成者先暫停出發並協助調整。</p>
+          </div>
+        </div>
+        <div class="step">
+          <strong>STEP 04</strong>
+          <div>
+            <h3>終點區：安排清場提醒</h3>
+            <p>終點區需有清楚指引，提醒遊客滑下後立即離開，避免後方遊客碰撞或孩子在出口區逗留。</p>
+          </div>
+        </div>
+        <div class="step">
+          <strong>STEP 05</strong>
+          <div>
+            <h3>異常狀況：醫護站與事件紀錄</h3>
+            <p>如有不適或受傷，工作人員先協助帶往醫護站，並留下時間、地點、設施、處理過程與後續關懷紀錄。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section panel">
+      <div class="section-head">
+        <div>
+          <div class="kicker">06 / 告示文案</div>
+          <h2>建議現場文字</h2>
+        </div>
+        <p>文字方向採用「清楚提醒」而非「強硬免責」，讓家長理解自身配合義務，同時保留園區主動管理與協助的形象。</p>
+      </div>
+      <div class="table">
+        <div class="row head">
+          <div>使用位置</div>
+          <div>建議文案</div>
+          <div>目的</div>
+        </div>
+        <div class="row">
+          <div>排隊入口</div>
+          <div>彩虹滑道為滑行類遊樂設施，搭乘時仍有一定風險。請確認可接受並願意遵守搭乘規範後，再排隊遊玩。</div>
+          <div>先告知風險，避免遊客事後主張完全不知情。</div>
+        </div>
+        <div class="row">
+          <div>出發平台</div>
+          <div>請坐穩中央、雙手握緊把手、雙腳向前放在指定位置。請勿外翻、拖地、轉身或滑行中自行調整姿勢。</div>
+          <div>把最容易發生問題的姿勢講清楚。</div>
+        </div>
+        <div class="row">
+          <div>親子同行提醒</div>
+          <div>小朋友搭乘時，請家長協助確認坐姿與雙腳位置，並配合工作人員指示。若無法配合規範，建議先選擇其他設施。</div>
+          <div>建立家長共同維護安全的角色。</div>
+        </div>
+        <div class="row">
+          <div>終點區</div>
+          <div>滑行結束後，請立即離開終點區，避免影響後方遊客安全。請勿停留、拍照或讓孩子在出口區奔跑。</div>
+          <div>降低出口碰撞與清場不足風險。</div>
+        </div>
+        <div class="row">
+          <div>醫護站提醒</div>
+          <div>如有身體不適或意外狀況，請立即通知現場工作人員，園區醫護站將協助提供必要支援。</div>
+          <div>讓遊客知道園區有支援，不會感覺求助無門。</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section panel">
+      <div class="section-head">
+        <div>
+          <div class="kicker">07 / 對外溝通語氣</div>
+          <h2>社群或現場說明建議</h2>
+        </div>
+        <p>若未來需要在粉絲頁或現場說明安全規範，建議語氣保持「提醒、照顧、共同維護」，避免直接指責遊客。</p>
+      </div>
+      <div class="quote">
+        <h3>建議對外表述方向</h3>
+        <p>
+          彩虹滑道是許多親子遊客喜歡的設施，為了讓大家玩得更安心，園區已加強搭乘前安全提醒、現場工作人員引導、終點區動線提醒與醫護站支援。也請家長陪同小朋友搭乘時，一起確認坐姿、把手與雙腳位置，遵守現場人員指示。大家多一分配合，就能讓孩子多一分安全。
+        </p>
+      </div>
+    </section>
+
+    <section class="section panel">
+      <div class="section-head">
+        <div>
+          <div class="kicker">08 / 建議優先順序</div>
+          <h2>可立即執行的三件事</h2>
+        </div>
+        <p>若要先求快速落地，建議依照以下順序處理。</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <span class="num">1</span>
+          <h3>先上排隊區與出發區告示</h3>
+          <p>把正確姿勢、錯誤姿勢、常見風險與醫護站支援先放到現場。</p>
+        </article>
+        <article class="card">
+          <span class="num">2</span>
+          <h3>同步建立大聲公播放</h3>
+          <p>用固定語音降低員工重複說明壓力，也讓遊客更難忽略規則。</p>
+        </article>
+        <article class="card">
+          <span class="num">3</span>
+          <h3>統一工作人員確認話術</h3>
+          <p>讓每位員工在出發前用同一套標準確認，避免說法不一造成爭議。</p>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
